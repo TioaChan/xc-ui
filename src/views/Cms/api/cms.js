@@ -1,6 +1,6 @@
-import http from '@/assets/Api/public'
+import http from '@/assets/api/public'
 import querystring from 'querystring'
-let sysConfig = require('@/../Config/sysConfig')
+let sysConfig = require('@/../config/sysConfig')
 let apiUrl = sysConfig.xcApiUrlPre;
 //测试
 export const page_test = id => {

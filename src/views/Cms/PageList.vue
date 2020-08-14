@@ -62,7 +62,7 @@
     </div>
 </template>
 <script>
-    import * as cmsApi from '@/views/Cms/Api/Cms.js'
+    import * as cmsApi from '@/views/cms/api/cms.js'
     import utilApi from '@/common/utils';
     export default {
         data() {
