@@ -1,7 +1,8 @@
 import http from '@/assets/api/public'
 import querystring from 'querystring'
-let sysConfig = require('@/../config/sysConfig')
-let apiUrl = sysConfig.xcApiUrlPre;
+// let sysConfig = require('@/../config/sysConfig')
+// let apiUrl = sysConfig.xcApiUrlPre;
+let apiUrl = "http://127.0.0.1:31001/api"
 //测试
 export const page_test = id => {
     return http.requestQuickGet(apiUrl + '/cms/user/get/' + id)
