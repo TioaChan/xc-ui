@@ -4,23 +4,24 @@
         <el-col :span="24" class="main">
             <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
                 <el-menu :default-active="this.$route.path" router>
+                    <template v-for="menu in this.$router.options.routes">
 
-                    <el-submenu v-for="menu in this.$router.options.routes" :index="menu.path" :key="menu.id">
+                        <el-submenu v-if="!menu.hidden" :index="menu.path" :key="menu.id">
 
-                        <template slot="title">
-                            <i class="fa" :class="menu.icon"></i>
-                            {{menu.name}}
-                        </template>
+                            <template slot="title">
+                                <i class="fa" :class="menu.icon"></i>
+                                {{menu.name}}
+                            </template>
 
-                        <template v-for="child in menu.children">
-                            <el-menu-item :index="child.path" :key="child.id">
-                                {{child.name}}
-                            </el-menu-item>
+                            <template v-for="child in menu.children">
+                                <el-menu-item :index="child.path" :key="child.id">
+                                    {{child.name}}
+                                </el-menu-item>
 
-                        </template>
+                            </template>
 
-                    </el-submenu>
-
+                        </el-submenu>
+                    </template>
                 </el-menu>
             </aside>
             <section class="content-container">
@@ -222,12 +223,13 @@
                 // top: 0px;
                 // bottom: 0px;
                 // left: 230px;
-                overflow-y: scroll;
+                // overflow-y: scroll;
                 padding: 20px;
 
                 .breadcrumb-container {
 
-                    //margin-bottom: 15px;
+                    margin-bottom: 15px;
+
                     .title {
                         width: 200px;
                         float: left;
