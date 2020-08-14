@@ -2,54 +2,52 @@
     <div>
         <!--查询表单-->
         <el-form :model="params">
-            <el-select v-model="params.siteId" placeholder="请选择站点">
+            <el-select v-model="params.siteId" placeholder="请选择站点" size="small">
                 <el-option v-for="item in siteList" :key="item.siteId" :label="item.siteName" :value="item.siteId">
                 </el-option>
             </el-select>
             <el-button type="primary" v-on:click="query" size="small">查询</el-button>
             <router-link class="mui-tab-item" :to="{path:'/cms/page/add/',query:{
-          page: this.params.page,
-          siteId: this.params.siteId}}">
+                page: this.params.page,
+                siteId: this.params.siteId}}">
                 <el-button type="primary" size="small">新增页面</el-button>
             </router-link>
         </el-form>
         <!--列表-->
-        <el-table :data="list" highlight-current-row v-loading="listLoading" style="width: 100%;">
-            <el-table-column type="index" width="60">
+        <el-table :data="list" highlight-current-row v-loading="listLoading" :span="24" size="small">
+            <el-table-column type="index">
             </el-table-column>
-            <el-table-column prop="pageName" label="页面名称" width="120">
+            <el-table-column prop="pageName" label="页面名称">
             </el-table-column>
-            <el-table-column prop="pageAliase" label="别名" width="120">
+            <el-table-column prop="pageAliase" label="别名">
             </el-table-column>
-            <el-table-column prop="pageType" label="类型（静态、动态）" width="150">
+            <el-table-column prop="pageType" label="类型（静态、动态）">
             </el-table-column>
-            <el-table-column prop="pageWebPath" label="访问路径" width="250">
+            <el-table-column prop="pageWebPath" label="访问路径">
             </el-table-column>
-            <el-table-column prop="pagePhysicalPath" label="物理路径" width="250">
+            <el-table-column prop="pagePhysicalPath" label="物理路径">
             </el-table-column>
-            <el-table-column prop="pageCreateTime" label="创建时间" width="180" :formatter="formatCreatetime">
+            <el-table-column prop="pageCreateTime" label="创建时间" :formatter="formatCreatetime">
             </el-table-column>
-            <el-table-column label="编辑" width="80">
+            <el-table-column label="编辑">
                 <template slot-scope="scope">
-
                     <el-button size="small" type="primary" @click="edit(scope.row.pageId)">编辑
                     </el-button>
                 </template>
             </el-table-column>
-            <el-table-column label="删除" width="80">
+            <el-table-column label="删除">
                 <template slot-scope="scope">
-
                     <el-button size="mini" type="danger" @click="del(scope.$index, scope.row)">删除
                     </el-button>
                 </template>
             </el-table-column>
-            <el-table-column label="静态化" width="80">
+            <el-table-column label="静态化">
                 <template slot-scope="scope">
                     <el-button size="small" type="primary" plain @click="generateHtml(scope.row.pageId)">静态化
                     </el-button>
                 </template>
             </el-table-column>
-            <el-table-column label="发布" width="80">
+            <el-table-column label="发布">
                 <template slot-scope="scope">
                     <el-button size="small" type="primary" plain @click="postPage(scope.row.pageId)">发布
                     </el-button>
@@ -58,7 +56,6 @@
         </el-table>
         <!--分页-->
         <el-col :span="24" class="toolbar">
-
             <el-pagination background layout="prev, pager, next" @current-change="changePage" :page-size="this.params.size" :total="total" :current-page="this.params.page" style="float:right;">
             </el-pagination>
         </el-col>
