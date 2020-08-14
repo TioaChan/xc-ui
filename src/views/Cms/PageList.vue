@@ -15,7 +15,7 @@
         </el-form>
         <!--列表-->
         <el-table :data="list" highlight-current-row v-loading="listLoading" :span="24" size="small">
-            <el-table-column type="index">
+            <el-table-column type="index" label="#">
             </el-table-column>
             <el-table-column prop="pageName" label="页面名称">
             </el-table-column>
@@ -29,27 +29,27 @@
             </el-table-column>
             <el-table-column prop="pageCreateTime" label="创建时间" :formatter="formatCreatetime">
             </el-table-column>
-            <el-table-column label="编辑">
+            <el-table-column label="编辑" width="80">
                 <template slot-scope="scope">
-                    <el-button size="small" type="primary" @click="edit(scope.row.pageId)">编辑
+                    <el-button size="mini" type="primary" @click="edit(scope.row.pageId)">编辑
                     </el-button>
                 </template>
             </el-table-column>
-            <el-table-column label="删除">
+            <el-table-column label="删除" width="80">
                 <template slot-scope="scope">
                     <el-button size="mini" type="danger" @click="del(scope.$index, scope.row)">删除
                     </el-button>
                 </template>
             </el-table-column>
-            <el-table-column label="静态化">
+            <el-table-column label="静态化" width="80">
                 <template slot-scope="scope">
-                    <el-button size="small" type="primary" plain @click="generateHtml(scope.row.pageId)">静态化
+                    <el-button size="mini" type="primary" plain @click="generateHtml(scope.row.pageId)">静态化
                     </el-button>
                 </template>
             </el-table-column>
-            <el-table-column label="发布">
+            <el-table-column label="发布" width="80">
                 <template slot-scope="scope">
-                    <el-button size="small" type="primary" plain @click="postPage(scope.row.pageId)">发布
+                    <el-button size="mini" type="primary" plain @click="postPage(scope.row.pageId)">发布
                     </el-button>
                 </template>
             </el-table-column>
@@ -69,7 +69,7 @@
             return {
                 params: {
                     page: 1, //页码
-                    size: 2, //每页显示个数
+                    size: 10, //每页显示个数
                     siteId: '' //站点id
                 },
                 listLoading: false,
@@ -156,22 +156,23 @@
             //   this.params.siteId = this.$route.query.siteId||'';
         },
         mounted() {
-            //   //默认查询页面
-            //   this.query()
-            //   //初始化站点列表
-            //   this.siteList = [
-            //     {
-            //       siteId:'5a751fab6abb5044e0d19ea1',
-            //       siteName:'门户主站'
-            //     },
-            //     {
-            //       siteId:'102',
-            //       siteName:'测试站'
-            //     }
-            //   ]
+            //默认查询页面
+            this.query()
+            //初始化站点列表
+            this.siteList = [
+            {
+                siteId: '5a751fab6abb5044e0d19ea1',
+                siteName: '门户主站'
+            },
+            {
+                siteId: '102',
+                siteName: '测试站'
+            }]
         }
     }
 </script>
-<style>
-
+<style scpoe>
+    .toolbar {
+        margin-top: 1rem;
+    }
 </style>

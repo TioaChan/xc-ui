@@ -32,57 +32,57 @@ module.exports = {
         proxy: {
             '/api/cms': {
                 target: 'http://localhost:31001',
-                changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''
-                }
-            },
-            '/ucenter': {
-                // target: 'http://localhost:3000/mock/11'
-                //target: 'http://127.0.0.1:31200'
-                target: 'http://127.0.0.1:50201'
-
-            },
-            '/auth': {
-                // target: 'http://localhost:3000/mock/11'
-                //target: 'http://127.0.0.1:31200'
-                target: 'http://127.0.0.1:50201/api'
-
-            },
-            '/course': {
-                // target: 'http://localhost:3000/mock/11'
-                //target: 'http://127.0.0.1:31200'
-                target: 'http://127.0.0.1:50201/api'
-
-            },
-            '/media': { //媒资管理
-                //target: 'http://127.0.0.1:31400'
-                target: 'http://127.0.0.1:50201'
+                },
             },
 
-            '/cms/!*': { //cms管理
-                //target: 'http://127.0.0.1:31001'
-                target: 'http://127.0.0.1:50201'
+            // '/ucenter': {
+            //     // target: 'http://localhost:3000/mock/11'
+            //     //target: 'http://127.0.0.1:31200'
+            //     target: 'http://127.0.0.1:50201'
 
-            },
+            // },
+            // '/auth': {
+            //     // target: 'http://localhost:3000/mock/11'
+            //     //target: 'http://127.0.0.1:31200'
+            //     target: 'http://127.0.0.1:50201/api'
+
+            // },
+            // '/course': {
+            //     // target: 'http://localhost:3000/mock/11'
+            //     //target: 'http://127.0.0.1:31200'
+            //     target: 'http://127.0.0.1:50201/api'
+
+            // },
+            // '/media': { //媒资管理
+            //     //target: 'http://127.0.0.1:31400'
+            //     target: 'http://127.0.0.1:50201'
+            // },
+
+            // '/cms/!*': { //cms管理
+            //     //target: 'http://127.0.0.1:31001'
+            //     target: 'http://127.0.0.1:50201'
+
+            // },
 
 
-            '/filesystem/!*': { //文件系统管理
-                //target: 'http://127.0.0.1:22100'
-                target: 'http://127.0.0.1:50201'
+            // '/filesystem/!*': { //文件系统管理
+            //     //target: 'http://127.0.0.1:22100'
+            //     target: 'http://127.0.0.1:50201'
 
-            },
-            '/category/!*': { //分类管理
-                // target: 'http://127.0.0.1:3000/mock/11'
-                //target: 'http://127.0.0.1:31200'
-                target: 'http://127.0.0.1:50201'
+            // },
+            // '/category/!*': { //分类管理
+            //     // target: 'http://127.0.0.1:3000/mock/11'
+            //     //target: 'http://127.0.0.1:31200'
+            //     target: 'http://127.0.0.1:50201'
 
-            },
-            '/sys/!*': { //系统管理
-                //target: 'http://127.0.0.1:31001'
-                target: 'http://127.0.0.1:50201'
+            // },
+            // '/sys/!*': { //系统管理
+            //     //target: 'http://127.0.0.1:31001'
+            //     target: 'http://127.0.0.1:50201'
 
-            }
+            // }
         }
     }
 }
