@@ -51,7 +51,7 @@
     export default {
         data() {
             return {
-                xclogo: require("@/assets/asset-logoIco-white.png"),
+                xclogo: require("@/assets/images/asset-logoIco-white.png"),
                 editLoading: false,
                 sysName: '系统管理中心',
                 user: {
