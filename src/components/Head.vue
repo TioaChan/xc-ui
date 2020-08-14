@@ -170,6 +170,7 @@
                 font-size: 20px;
                 padding-left: 0px;
                 padding-right: 20px;
+                padding-top: 5px;
                 border-color: rgba(238, 241, 146, 0.3);
                 border-right-width: 1px;
 

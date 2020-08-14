@@ -65,8 +65,8 @@
     </div>
 </template>
 <script>
-    // import * as cmsApi from '@/views/api/cms'
-    // import utilApi from '@/common/utils';
+    import * as cmsApi from '@/views/Cms/Api/Cms.js'
+    import utilApi from '@/common/utils';
     export default {
         data() {
             return {
@@ -83,12 +83,12 @@
             }
         },
         methods: {
-            //       formatCreatetime(row, column){
-            //         var createTime = new Date(row.pageCreateTime);
-            //         if (createTime) {
-            //           return utilApi.formatDate(createTime, 'yyyy-MM-dd hh:mm:ss');
-            //         }
-            //       },
+            formatCreatetime(row) {
+                var createTime = new Date(row.pageCreateTime);
+                if (createTime) {
+                    return utilApi.formatDate(createTime, 'yyyy-MM-dd hh:mm:ss');
+                }
+            },
             //       generateHtml (id) {
             // //        console.log(id)
             //         this.$router.push({ path: '/cms/page/html/'+id, query:{
@@ -138,17 +138,17 @@
 
             //         });
             //       },
-            //       changePage(page){
-            //         this.params.page = page;
-            //         this.query()
-            //       },
-            //       query(){
-            //         cmsApi.page_list(this.params.page,this.params.size,this.params).then((res)=>{
-            //           console.log(res)
-            //           this.total = res.queryResult.total
-            //           this.list = res.queryResult.list
-            //         })
-            //       }
+            changePage(page) {
+                this.params.page = page;
+                this.query()
+            },
+            query() {
+                cmsApi.page_list(this.params.page, this.params.size, this.params).then((res) => {
+                    console.log(res)
+                    this.total = res.queryResult.total
+                    this.list = res.queryResult.list
+                })
+            }
         },
         created() {
             //     //存储 请求参数
