@@ -3,7 +3,7 @@
 
         <el-col :span="24" class="header">
             <el-col :span="14" class="logo">
-                <img src="/static/images/asset-logoIco-white.png" width="500px" alt="">{{collapsed ? '' : sysName}}
+                <img :src="xclogo" width="500px" alt="">{{collapsed ? '' : sysName}}
             </el-col>
             <!--<el-col :span="10">
         <div class="tools" @click.prevent="collapse">
@@ -51,6 +51,7 @@
     export default {
         data() {
             return {
+                xclogo: require("@/assets/asset-logoIco-white.png"),
                 editLoading: false,
                 sysName: '系统管理中心',
                 user: {
