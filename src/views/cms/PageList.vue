@@ -56,7 +56,7 @@
         </el-table>
         <!--分页-->
         <el-col :span="24" class="toolbar">
-            <el-pagination background layout="prev, pager, next" @current-change="changePage" :page-size="this.params.size" :total="total" :current-page="this.params.page" style="float:right;">
+            <el-pagination background layout="total,sizes,prev, pager, next" @current-change="changePage" :page-sizes="[100, 200, 300, 400]" :page-size="this.params.size" :total="total" :current-page="this.params.page" style="float:right;">
             </el-pagination>
         </el-col>
     </div>
