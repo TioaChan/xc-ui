@@ -1,5 +1,6 @@
 <template>
     <el-select v-model="params.siteId" placeholder="请选择站点" size="small" @change="handlerSiteChange">
+        <el-option key="findAll" label="All" value="findAll"></el-option>
         <el-option v-for="item in params.siteList" :key="item.siteId" :label="item.siteName" :value="item.siteId">
         </el-option>
     </el-select>
