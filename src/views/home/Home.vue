@@ -28,9 +28,11 @@
                 <div class="grid-content bg-purple-light">
                     <el-col :span="24" class="breadcrumb-container">
                         <strong class="title">{{$route.name}}</strong>
-                        <el-breadcrumb separator="/" class="breadcrumb-inner">
-
-                        </el-breadcrumb>
+                        <!-- <el-breadcrumb separator="/">
+                            <el-breadcrumb-item v-for="(item,index) in this.$router.options.routes" :key="index" :to="{ path: item.path }">
+                                {{$route.name}}
+                            </el-breadcrumb-item>
+                        </el-breadcrumb> -->
                     </el-col>
                     <el-col :span="24" class="content-wrapper">
                         <transition name="fade" mode="out-in">
@@ -223,7 +225,7 @@
                 // top: 0px;
                 // bottom: 0px;
                 // left: 230px;
-                // overflow-y: scroll;
+                overflow-y: scroll;
                 padding: 20px;
 
                 .breadcrumb-container {
