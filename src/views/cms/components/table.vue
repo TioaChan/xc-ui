@@ -6,7 +6,7 @@
             </el-table-column>
             <el-table-column prop="pageName" label="页面名称">
             </el-table-column>
-            <el-table-column prop="pageAliase" label="别名">
+            <el-table-column prop="pageAliase" label="别名" width="120">
             </el-table-column>
             <el-table-column prop="pageType" label="类型（静态、动态）" width="130">
             </el-table-column>
@@ -14,7 +14,7 @@
             </el-table-column>
             <el-table-column prop="pagePhysicalPath" label="物理路径">
             </el-table-column>
-            <el-table-column prop="pageCreateTime" label="创建时间" :formatter="formatCreatetime">
+            <el-table-column prop="pageCreateTime" label="创建时间" :formatter="formatCreatetime" width="145">
             </el-table-column>
             <el-table-column label="编辑" width="80">
                 <template slot-scope="scope">
