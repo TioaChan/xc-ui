@@ -1,11 +1,7 @@
 <template>
     <div>
-        <!--查询表单-->
-        <!-- <el-form :model="params"> -->
 
         <siteSelector v-bind:siteData="siteData" @changeSite="handlerSiteChange"></siteSelector>
-
-        <el-button type="primary" v-on:click="handleFlushTableData" size="small">查询</el-button>
 
         <router-link class="mui-tab-item" :to="{path:'/cms/page/add/',handleFlushTableData:{
                 page: this.params.page,
@@ -13,9 +9,11 @@
             <el-button type="primary" size="small">新增页面</el-button>
         </router-link>
 
-        <!-- </el-form> -->
+        <!-- 数据 -->
         <listTable v-bind:tableListData="tableListData"></listTable>
+        <!-- 分页按钮 -->
         <pagination v-bind:params="params" @changePages="handleChangePage" @changeSize="handleChangeSize"></pagination>
+
     </div>
 </template>
 <script>
@@ -36,15 +34,12 @@
                     total: 0, //总数
                     page: 1, //页码
                     size: 10, //每页显示个数
-
                 },
-                // listLoading: false,
-                tableListData: [],
-                // total: 0,
                 siteData: {
                     siteId: '', //站点id
                     siteList: [] //站点列表
-                }
+                },
+                tableListData: [],
             }
         },
         methods: {
