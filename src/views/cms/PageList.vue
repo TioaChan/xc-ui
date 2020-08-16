@@ -2,14 +2,12 @@
     <div>
         <!--查询表单-->
         <!-- <el-form :model="params"> -->
-        <el-select v-model="params.siteId" placeholder="请选择站点" size="small">
-            <el-option v-for="item in siteList" :key="item.siteId" :label="item.siteName" :value="item.siteId">
-            </el-option>
-        </el-select>
 
-        <el-button type="primary" v-on:click="query" size="small">查询</el-button>
+        <siteSelector v-bind:siteData="siteData" @changeSite="handlerSiteChange"></siteSelector>
 
-        <router-link class="mui-tab-item" :to="{path:'/cms/page/add/',query:{
+        <el-button type="primary" v-on:click="handleFlushTableData" size="small">查询</el-button>
+
+        <router-link class="mui-tab-item" :to="{path:'/cms/page/add/',handleFlushTableData:{
                 page: this.params.page,
                 siteId: this.params.siteId}}">
             <el-button type="primary" size="small">新增页面</el-button>
@@ -23,12 +21,14 @@
 <script>
     import * as cmsApi from '@/views/cms/api/cms.js'
 
+    import siteSelector from './components/siteselector'
     import listTable from "./components/table"
     import pagination from "./components/pagination"
     export default {
         components: {
             listTable,
-            pagination
+            pagination,
+            siteSelector
         },
         data() {
             return {
@@ -36,30 +36,46 @@
                     total: 0, //总数
                     page: 1, //页码
                     size: 10, //每页显示个数
-                    siteId: '' //站点id
+
                 },
                 // listLoading: false,
                 tableListData: [],
                 // total: 0,
-
-                siteList: [] //站点列表
+                siteData: {
+                    siteId: '', //站点id
+                    siteList: [] //站点列表
+                }
             }
         },
         methods: {
-            query() {
+            handleFlushTableData() {
+                console.log("handleFlushTableData")
                 cmsApi.page_list(this.params.page, this.params.size, this.params).then((res) => {
                     console.log(res)
                     this.params.total = res.queryResult.total
                     this.tableListData = res.queryResult.list
                 })
             },
+            handleFlushSiteData() {
+                cmsApi.site_list().then(resp => {
+                    // console.log()
+                    this.siteData.siteList = resp.queryResult.list
+                })
+            },
             handleChangePage() {
-                // this.params.page = page;
-                this.query()
-                // console.log(this.params)
+                // console.log("handleChangePage")
+                this.handleFlushTableData()
             },
             handleChangeSize() {
-                this.query()
+                // console.log("handleChangeSize")
+                this.handleFlushTableData()
+            },
+            handlerSiteChange() {
+                cmsApi.page_list_withParams(this.params.page, this.params.size, { siteId: this.siteData.siteId }).then((res) => {
+                    console.log(res)
+                    this.params.total = res.queryResult.total
+                    this.tableListData = res.queryResult.list
+                })
             }
             // formatCreatetime(row) {
             //     var createTime = new Date(row.pageCreateTime);
@@ -106,7 +122,7 @@
             //             this.listLoading = false;
             //             if(res.success){
             //               this.$message.success("删除成功")
-            //               this.query();
+            //               this.handleFlushTableData;
             //             }else{
             //               this.$message.error('删除失败');
             //             }
@@ -128,7 +144,8 @@
         },
         mounted() {
             //默认查询页面
-            this.query()
+            this.handleFlushTableData()
+            this.handleFlushSiteData()
             //初始化站点列表
             // this.siteList = [
             // {

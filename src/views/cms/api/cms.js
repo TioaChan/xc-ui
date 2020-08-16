@@ -1,5 +1,5 @@
 import http from '@/assets/api/public'
-// import querystring from 'querystring'
+import querystring from 'querystring'
 let sysConfig = require('@/../config/sysConfig')
 let apiUrl = sysConfig.xcApiUrlPre;
 //测试
@@ -12,6 +12,21 @@ export const page_list = (page, size) => {
     //使用querystring将json对象转成key/value串
     // let querys = querystring.stringify(params)
     return http.requestQuickGet(apiUrl + '/cms/page/list/' + page + '/' + size + '/')
+}
+/*页面列表*/
+export const page_list_withParams = (page, size, params) => {
+    //params为json格式
+    //使用querystring将json对象转成key/value串
+    console.log(params);
+    let querys = querystring.stringify(params)
+    return http.requestQuickGet(apiUrl + '/cms/page/list/' + page + '/' + size + '/?' + querys)
+}
+/*站点列表*/
+export const site_list = () => {
+    //params为json格式
+    //使用querystring将json对象转成key/value串
+    // let querys = querystring.stringify(params)
+    return http.requestQuickGet(apiUrl + '/cms/site/list/')
 }
 /*页面添加*/
 export const page_add = params => {

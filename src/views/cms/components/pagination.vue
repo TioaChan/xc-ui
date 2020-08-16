@@ -22,7 +22,7 @@
         props: ["params"],
         methods: {
             handleChangePage(page) {
-                console.log(page);
+                // console.log(page);
                 this.params.page = page;
                 return this.$emit("changePages");
             },
