@@ -7,27 +7,23 @@ export const page_test = id => {
     return http.requestQuickGet(apiUrl + '/cms/user/get/' + id)
 }
 /*页面列表*/
-export const page_list = (page, size) => {
-    //params为json格式
-    //使用querystring将json对象转成key/value串
-    // let querys = querystring.stringify(params)
-    return http.requestQuickGet(apiUrl + '/cms/page/list/' + page + '/' + size + '/')
-}
-/*页面列表*/
-export const page_list_withParams = (page, size, params) => {
+export const page_list = (page, size, params) => {
     //params为json格式
     //使用querystring将json对象转成key/value串
     console.log(params);
     let querys = querystring.stringify(params)
     return http.requestQuickGet(apiUrl + '/cms/page/list/' + page + '/' + size + '/?' + querys)
 }
+
 /*站点列表*/
 export const site_list = () => {
-    //params为json格式
-    //使用querystring将json对象转成key/value串
-    // let querys = querystring.stringify(params)
     return http.requestQuickGet(apiUrl + '/cms/site/list/')
 }
+/*模板列表*/
+export const template_list = () => {
+    return http.requestQuickGet(apiUrl + '/cms/template/list/')
+}
+
 /*页面添加*/
 export const page_add = params => {
     return http.requestPost(apiUrl + '/cms/page/add', params)

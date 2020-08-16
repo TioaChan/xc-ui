@@ -70,6 +70,7 @@
             },
             edit(row) {
                 console.log(row)
+                return this.$emit("activeEditForm");
                 // this.$router.push({
                 //     path: '/cms/page/edit/' + pageId,
                 //     query: {

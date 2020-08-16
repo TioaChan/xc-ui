@@ -14,7 +14,7 @@
                     total: 0,
                     page: 1, //页码
                     size: 10, //每页显示个数
-                    siteId: '' //站点id
+                    siteId: 'findAll' //站点id
                 },
                 pageSizes: [10, 20, 30, 40], //每页可选显示个数
             }
