@@ -77,62 +77,6 @@
                     this.tableListData = res.queryResult.list
                 })
             }
-            // formatCreatetime(row) {
-            //     var createTime = new Date(row.pageCreateTime);
-            //     if (createTime) {
-            //         return utilApi.formatDate(createTime, 'yyyy-MM-dd hh:mm:ss');
-            //     }
-            // },
-            //       generateHtml (id) {
-            // //        console.log(id)
-            //         this.$router.push({ path: '/cms/page/html/'+id, query:{
-            //           page: this.params.page,
-            //           siteId: this.params.siteId}})
-            //       },
-            //       postPage (id) {
-            //         this.$confirm('确认发布该页面吗?', '提示', {
-            //         }).then(() => {
-            //           this.listLoading = true;
-            //           cmsApi.page_postPage(id).then((res) => {
-            //             if(res.success){
-            //               console.log('发布页面id='+id);
-            //               this.listLoading = false;
-            //               this.$message.success('发布成功，请稍后查看结果');
-            //             }else{
-            //               this.$message.error('发布失败');
-            //             }
-            //           });
-            //         }).catch(() => {
-
-            //         });
-            //       },
-            //       edit(pageId){
-            //         this.$router.push({ path: '/cms/page/edit/'+pageId,query:{
-            //           page: this.params.page,
-            //           siteId: this.params.siteId}})
-            //       },
-            //       //删除
-            //       del (index, row) {
-            //         this.$confirm('确认删除该记录吗?', '提示', {
-            //           type: 'warning'
-            //         }).then(() => {
-            //           this.listLoading = true;
-            //           let pageId = row.pageId;
-            //           cmsApi.page_del(pageId).then((res) => {
-            //             this.listLoading = false;
-            //             if(res.success){
-            //               this.$message.success("删除成功")
-            //               this.handleFlushTableData;
-            //             }else{
-            //               this.$message.error('删除失败');
-            //             }
-
-            //           });
-            //         }).catch(() => {
-
-            //         });
-            //       },
-
         },
         created() {
             //     //存储 请求参数
@@ -146,16 +90,6 @@
             //默认查询页面
             this.handleFlushTableData()
             this.handleFlushSiteData()
-            //初始化站点列表
-            // this.siteList = [
-            // {
-            //     siteId: '5a751fab6abb5044e0d19ea1',
-            //     siteName: '门户主站'
-            // },
-            // {
-            //     siteId: '102',
-            //     siteName: '测试站'
-            // }]
         }
     }
 </script>

@@ -18,25 +18,25 @@
             </el-table-column>
             <el-table-column label="编辑" width="80">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="primary" @click="edit(scope.row.pageId)">编辑
+                    <el-button size="mini" type="primary" @click="edit(scope.row)">编辑
                     </el-button>
                 </template>
             </el-table-column>
             <el-table-column label="删除" width="80">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="del(scope.$index, scope.row)">删除
+                    <el-button size="mini" type="danger" @click="del(scope.row)">删除
                     </el-button>
                 </template>
             </el-table-column>
             <el-table-column label="静态化" width="90">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="primary" plain @click="generateHtml(scope.row.pageId)">静态化
+                    <el-button size="mini" type="primary" plain @click="generateHtml(scope.row)">静态化
                     </el-button>
                 </template>
             </el-table-column>
             <el-table-column label="发布" width="80">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="primary" plain @click="postPage(scope.row.pageId)">发布
+                    <el-button size="mini" type="primary" plain @click="postPage(scope.row)">发布
                     </el-button>
                 </template>
             </el-table-column>
@@ -68,10 +68,65 @@
                     return utilApi.formatDate(createTime, 'yyyy-MM-dd hh:mm:ss');
                 }
             },
-            // changePage(page) {
-            //     this.params.page = page;
-            //     this.query()
-            // },
+            edit(row) {
+                console.log(row)
+                // this.$router.push({
+                //     path: '/cms/page/edit/' + pageId,
+                //     query: {
+                //         page: this.params.page,
+                //         siteId: this.params.siteId
+                //     }
+                // })
+            },
+            //删除
+            del(row) {
+                this.$confirm('确认删除该记录吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    console.log(row)
+                    // this.listLoading = true;
+                    // let pageId = row.pageId;
+                    // cmsApi.page_del(pageId).then((res) => {
+                    //     this.listLoading = false;
+                    //     if (res.success) {
+                    //         this.$message.success("删除成功")
+                    //         this.handleFlushTableData;
+                    //     } else {
+                    //         this.$message.error('删除失败');
+                    //     }
+
+                    // });
+                }).catch(() => {
+
+                });
+            },
+            generateHtml(row) {
+                console.log(row)
+                // this.$router.push({
+                //     path: '/cms/page/html/' + id,
+                //     query: {
+                //         page: this.params.page,
+                //         siteId: this.params.siteId
+                //     }
+                // })
+            },
+            postPage(row) {
+                this.$confirm('确认发布该页面吗?', '提示', {}).then(() => {
+                    console.log(row)
+                    // this.listLoading = true;
+                    // cmsApi.page_postPage(id).then((res) => {
+                    //     if (res.success) {
+                    //         console.log('发布页面id=' + id);
+                    //         this.listLoading = false;
+                    //         this.$message.success('发布成功，请稍后查看结果');
+                    //     } else {
+                    //         this.$message.error('发布失败');
+                    //     }
+                    // });
+                }).catch(() => {
+
+                });
+            },
         },
         mounted() {
             this.list = this.tableListData; //来自父组件的数据 赋给 子组件
