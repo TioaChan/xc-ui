@@ -1,4 +1,4 @@
-# xc-ui-pc-sysmanage
+# 学成在线CMS前端
 
 ## Project setup
 ```
