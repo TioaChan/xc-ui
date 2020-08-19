@@ -10,7 +10,6 @@ export const page_test = id => {
 export const page_list = (page, size, params) => {
     //params为json格式
     //使用querystring将json对象转成key/value串
-    console.log(params);
     let querys = querystring.stringify(params)
     return http.requestQuickGet(apiUrl + '/cms/page/list/' + page + '/' + size + '/?' + querys)
 }

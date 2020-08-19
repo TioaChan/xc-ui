@@ -46,6 +46,7 @@
 </template>
 
 <script>
+    import * as cmsApi from '@/views/cms/api/cms.js'
     import utilApi from '@/common/utils';
     export default {
         data() {
@@ -84,21 +85,18 @@
                 this.$confirm('确认删除该记录吗?', '提示', {
                     type: 'warning'
                 }).then(() => {
-                    console.log(row)
-                    // this.listLoading = true;
-                    // let pageId = row.pageId;
-                    // cmsApi.page_del(pageId).then((res) => {
-                    //     this.listLoading = false;
-                    //     if (res.success) {
-                    //         this.$message.success("删除成功")
-                    //         this.handleFlushTableData;
-                    //     } else {
-                    //         this.$message.error('删除失败');
-                    //     }
-
-                    // });
-                }).catch(() => {
-
+                    // console.log(row)
+                    this.listLoading = true;
+                    cmsApi.page_del(row.pageId).then((res) => {
+                        if (res.success) {
+                            this.$message.success("删除成功")
+                        } else {
+                            this.$message.error('删除失败');
+                        }
+                    });
+                }).finally(() => {
+                    this.listLoading = false;
+                    return this.$emit("flushTableData");
                 });
             },
             generateHtml(row) {

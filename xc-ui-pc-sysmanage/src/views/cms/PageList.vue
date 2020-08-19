@@ -6,7 +6,7 @@
         <el-button type="primary" size="small" @click="activeAddForm()">新增页面</el-button>
 
         <!-- 数据 -->
-        <listTable v-bind:tableListData="tableListData" @activeEditForm="activeEditForm()"></listTable>
+        <listTable v-bind:tableListData="tableListData" @activeEditForm="activeEditForm()" @flushTableData="handleFlushTableData()"></listTable>
         <!-- 分页按钮 -->
         <pagination v-bind:params="params" @changePages="handleFlushTableData" @changeSize="handleFlushTableData"></pagination>
 
