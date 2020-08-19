@@ -43,8 +43,8 @@
 
         </el-form>
         <div slot="footer" class="dialog-footer">
-            <el-button @click="go_back">返回</el-button>
-            <el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
+            <el-button @click="handlerCloesForm">返回</el-button>
+            <el-button type="primary" @click.native="handlerSubmitForm" :loading="addLoading">提交</el-button>
         </div>
     </div>
 </template>
@@ -91,34 +91,38 @@
             }
         },
         methods: {
-            go_back() {
+            handlerCloesForm() {
                 this.$refs['addForm'].resetFields();
                 return this.$emit("close");
             },
-            addSubmit() {
-                this.$refs.pageForm.validate((valid) => {
+            handlerSubmitForm() {
+                this.$refs['addForm'].validate((valid) => {
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            // this.addLoading = true;
-                            // cmsApi.page_add(this.pageForm).then((res) => {
-                            //     console.log(res);
-                            //     if (res.success) {
-                            //         this.addLoading = false;
-                            //         //NProgress.done();
-                            //         this.$message({
-                            //             message: '提交成功',
-                            //             type: 'success'
-                            //         });
-                            //         this.$refs['pageForm'].resetFields();
+                            // console.log(this.pageForm)
+                            this.addLoading = true;
+                            cmsApi.page_add(this.pageForm).then((resp) => {
+                                // console.log(resp);
+                                if (resp.success) {
+                                    // this.addLoading = false;
+                                    //NProgress.done();
+                                    this.$message({
+                                        message: '提交成功',
+                                        type: 'success'
+                                    });
+                                    // this.$refs['pageForm'].resetFields();
 
-                            //     } else if (res.message) {
-                            //         this.addLoading = false;
-                            //         this.$message.error(res.message);
-                            //     } else {
-                            //         this.addLoading = false;
-                            //         this.$message.error('提交失败');
-                            //     }
-                            // });
+                                } else if (resp.message) {
+                                    // this.addLoading = false;
+                                    this.$message.error(resp.message);
+                                } else {
+                                    // this.addLoading = false;
+                                    this.$message.error('提交失败');
+                                }
+                            }).finally(() => {
+                                this.addLoading = false;
+                                this.handlerCloesForm();
+                            });
                         });
                     }
                 });
@@ -128,12 +132,12 @@
             cmsApi.site_list().then(resp => {
                 // console.log()
                 this.siteList = resp.queryResult.list
-                console.log(this.siteList)
+                // console.log(this.siteList)
             })
             cmsApi.template_list().then(resp => {
                 // console.log()
                 this.templateList = resp.queryResult.list
-                console.log(this.siteList)
+                // console.log(this.siteList)
             })
         }
     }

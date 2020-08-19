@@ -70,7 +70,7 @@
         methods: {
             handleFlushTableData() { //查询全部页面信息
                 cmsApi.page_list(this.params.page, this.params.size, { siteId: this.siteData.siteId }).then((res) => {
-                    console.log(res)
+                    // console.log(res)
                     this.params.total = res.queryResult.total
                     this.tableListData = res.queryResult.list
                 })
@@ -90,7 +90,7 @@
             },
 
             activeEditForm() {
-                console.log("111")
+                // console.log("111")
                 this.dialogFormVisible4Edit = true;
             },
             closeEditForm() {
