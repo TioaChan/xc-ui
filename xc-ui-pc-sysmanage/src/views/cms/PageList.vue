@@ -6,7 +6,7 @@
         <el-button type="primary" size="small" @click="activeAddForm()">新增页面</el-button>
 
         <!-- 数据 -->
-        <listTable v-bind:tableListData="tableListData" @activeEditForm="activeEditForm()" @flushTableData="handleFlushTableData()"></listTable>
+        <listTable v-bind:tableListData="tableListData" @activeEditForm="activeEditForm($event)" @flushTableData="handleFlushTableData()"></listTable>
         <!-- 分页按钮 -->
         <pagination v-bind:params="params" @changePages="handleFlushTableData" @changeSize="handleFlushTableData"></pagination>
 
@@ -64,7 +64,7 @@
                 dialogFormVisible: false, //新增弹层 显示/隐藏
                 dialogFormVisible4Edit: false, // 编辑弹层 显示/隐藏
                 currentFormData: {}, //编辑弹层 表单数据	
-
+                editPageId: 0,
             }
         },
         methods: {
@@ -89,8 +89,9 @@
                 this.handleFlushTableData()
             },
 
-            activeEditForm() {
-                // console.log("111")
+            activeEditForm(formData) {
+
+                this.currentFormData = formData;
                 this.dialogFormVisible4Edit = true;
             },
             closeEditForm() {
