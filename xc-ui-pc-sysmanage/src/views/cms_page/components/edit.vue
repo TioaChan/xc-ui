@@ -50,7 +50,9 @@
 </template>
 
 <script>
-    import * as cmsApi from '@/assets/api/cms.js'
+    import * as cms_pageApi from '@/assets/api/cms_page.js'
+    import * as cms_siteApi from '@/assets/api/cms_site.js'
+    import * as cms_templateApi from '@/assets/api/cms_template.js'
     export default {
         data() {
             return {
@@ -110,7 +112,7 @@
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.addLoading = true;
-                            cmsApi.page_edit(this.pageForm).then((resp) => {
+                            cms_pageApi.page_edit(this.pageForm).then((resp) => {
                                 if (resp.success) {
                                     this.$message({
                                         message: '保存成功',
@@ -131,10 +133,10 @@
             }
         },
         created() {
-            cmsApi.site_list().then(resp => {
+            cms_siteApi.site_list().then(resp => {
                 this.siteList = resp.queryResult.list
             })
-            cmsApi.template_list().then(resp => {
+            cms_templateApi.template_list().then(resp => {
                 this.templateList = resp.queryResult.list
             })
             this.pageForm = this.currentFormData;

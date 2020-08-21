@@ -50,7 +50,9 @@
 </template>
 
 <script>
-    import * as cmsApi from '@/assets/api/cms.js'
+    import * as cms_pageApi from '@/assets/api/cms_page.js'
+    import * as cms_siteApi from '@/assets/api/cms_site.js'
+    import * as cms_templateApi from '@/assets/api/cms_template.js'
     export default {
         data() {
             return {
@@ -101,7 +103,7 @@
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             // console.log(this.pageForm)
                             this.addLoading = true;
-                            cmsApi.page_add(this.pageForm).then((resp) => {
+                            cms_pageApi.page_add(this.pageForm).then((resp) => {
                                 // console.log(resp);
                                 if (resp.success) {
                                     // this.addLoading = false;
@@ -129,15 +131,11 @@
             }
         },
         created() {
-            cmsApi.site_list().then(resp => {
-                // console.log()
+            cms_siteApi.site_list().then(resp => {
                 this.siteList = resp.queryResult.list
-                // console.log(this.siteList)
             })
-            cmsApi.template_list().then(resp => {
-                // console.log()
+            cms_templateApi.template_list().then(resp => {
                 this.templateList = resp.queryResult.list
-                // console.log(this.siteList)
             })
         }
     }

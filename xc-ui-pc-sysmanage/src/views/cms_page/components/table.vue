@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import * as cmsApi from '@/assets/api/cms.js'
+    import * as cmsApi from '@/assets/api/cms_page.js'
     import utilApi from '@/common/utils';
     export default {
         data() {

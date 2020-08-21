@@ -30,7 +30,8 @@
     </div>
 </template>
 <script>
-    import * as cmsApi from '@/assets/api/cms.js'
+    import * as cms_pageApi from '@/assets/api/cms_page.js'
+    import * as cms_siteApi from '@/assets/api/cms_site.js'
 
     import siteSelector from './components/siteselector'
     import listTable from "./components/table"
@@ -69,14 +70,14 @@
         },
         methods: {
             handleFlushTableData() { //查询全部页面信息
-                cmsApi.page_list(this.params.page, this.params.size, { siteId: this.siteData.siteId }).then((res) => {
+                cms_pageApi.page_list(this.params.page, this.params.size, { siteId: this.siteData.siteId }).then((res) => {
                     // console.log(res)
                     this.params.total = res.queryResult.total
                     this.tableListData = res.queryResult.list
                 })
             },
             handleFlushSiteData() { //查询全部站点信息
-                cmsApi.site_list().then(resp => {
+                cms_siteApi.site_list().then(resp => {
                     // console.log()
                     this.siteData.siteList = resp.queryResult.list
                 })
