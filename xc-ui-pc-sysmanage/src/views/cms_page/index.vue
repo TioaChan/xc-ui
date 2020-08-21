@@ -33,8 +33,8 @@
     import * as cmsApi from '@/assets/api/cms.js'
 
     import siteSelector from './components/siteselector'
-    import listTable from "@/components/table"
-    import pagination from "@/components/pagination"
+    import listTable from "./components/table"
+    import pagination from "./components/pagination"
     import addForm from './components/add'
     import editForm from './components/edit'
     export default {
