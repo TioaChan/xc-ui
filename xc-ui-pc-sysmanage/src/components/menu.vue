@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import PHead from '@/components/Head.vue';
+    import PHead from '@/components/header.vue';
     // import utilApi from '../../../common/utils';
     export default {
         components: {

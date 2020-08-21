@@ -1,11 +1,11 @@
-import home from '@/views/home/Home.vue';
-import page_list from '@/views/cms/PageList.vue';
-import site_list from '@/views/site/index.vue';
-import template_list from '@/views/template/index.vue';
+import Home from '@/components/menu.vue';
+import page_list from '@/views/cms_page/index.vue';
+import site_list from '@/views/cms_site/index.vue';
+import template_list from '@/views/cms_template/index.vue';
 // import page_html from '@/module/cms/page/page_html.vue';
 export default [{
         path: '/cms',
-        component: home,
+        component: Home,
         name: 'CMS',
         hidden: false,
         children: [

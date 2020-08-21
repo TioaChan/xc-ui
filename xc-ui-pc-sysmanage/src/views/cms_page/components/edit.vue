@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :model="pageForm" label-width="80px" :rules="pageFormRules" ref="addForm">
+        <el-form :model="pageForm" label-width="80px" :rules="pageFormRules" ref="editForm">
             <el-form-item label="所属站点" prop="siteId">
                 <el-select v-model="pageForm.siteId" placeholder="请选择站点">
                     <el-option v-for="item in siteList" :key="item.siteId" :label="item.siteName" :value="item.siteId">
@@ -44,13 +44,13 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="handlerCloesForm">返回</el-button>
-            <el-button type="primary" @click.native="handlerSubmitForm" :loading="addLoading">提交</el-button>
+            <el-button type="primary" @click.native="handlerUpdateForm" :loading="addLoading">保存</el-button>
         </div>
     </div>
 </template>
 
 <script>
-    import * as cmsApi from '@/views/cms/api/cms.js'
+    import * as cmsApi from '@/assets/api/cms.js'
     export default {
         data() {
             return {
@@ -90,34 +90,36 @@
 
             }
         },
+        props: ["currentFormData"],
+        watch: {
+            currentFormData: {
+                deep: true,
+                handler() {
+                    this.pageForm = this.currentFormData;
+                    // console.log(nv + "==" + ov);
+                }
+            },
+        },
         methods: {
             handlerCloesForm() {
-                this.$refs['addForm'].resetFields();
+                this.$refs['editForm'].resetFields();
                 return this.$emit("close");
             },
-            handlerSubmitForm() {
-                this.$refs['addForm'].validate((valid) => {
+            handlerUpdateForm() {
+                this.$refs['editForm'].validate((valid) => {
                     if (valid) {
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
-                            // console.log(this.pageForm)
                             this.addLoading = true;
-                            cmsApi.page_add(this.pageForm).then((resp) => {
-                                // console.log(resp);
+                            cmsApi.page_edit(this.pageForm).then((resp) => {
                                 if (resp.success) {
-                                    // this.addLoading = false;
-                                    //NProgress.done();
                                     this.$message({
-                                        message: '提交成功',
+                                        message: '保存成功',
                                         type: 'success'
                                     });
-                                    // this.$refs['pageForm'].resetFields();
-
                                 } else if (resp.message) {
-                                    // this.addLoading = false;
                                     this.$message.error(resp.message);
                                 } else {
-                                    // this.addLoading = false;
-                                    this.$message.error('提交失败');
+                                    this.$message.error('保存失败');
                                 }
                             }).finally(() => {
                                 this.addLoading = false;
@@ -130,15 +132,12 @@
         },
         created() {
             cmsApi.site_list().then(resp => {
-                // console.log()
                 this.siteList = resp.queryResult.list
-                // console.log(this.siteList)
             })
             cmsApi.template_list().then(resp => {
-                // console.log()
                 this.templateList = resp.queryResult.list
-                // console.log(this.siteList)
             })
+            this.pageForm = this.currentFormData;
         }
     }
 </script>

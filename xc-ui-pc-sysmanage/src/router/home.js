@@ -1,4 +1,4 @@
-import Home from '@/views/home/Home.vue';
+import Home from '@/components/menu.vue';
 export default [{
         path: '/',
         component: Home,

@@ -30,7 +30,7 @@
     </div>
 </template>
 <script>
-    import * as cmsApi from '@/views/cms/api/cms.js'
+    import * as cmsApi from '@/assets/api/cms.js'
 
     import siteSelector from './components/siteselector'
     import listTable from "./components/table"
