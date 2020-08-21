@@ -37,8 +37,8 @@
     </section>
 </template>
 <script>
-    import * as courseApi from '../api/course';
-    import utilApi from '../../../common/utils';
+    import * as courseApi from '@/assets/api/course';
+    // import utilApi from '@/common/utils';
     let sysConfig = require('@/../config/sysConfig')
     export default {
         data() {

@@ -30,8 +30,8 @@
     </div>
 </template>
 <script>
-    import * as courseApi from '../api/course';
-    import utilApi from '../../../common/utils';
+    import * as courseApi from '@/assets/api/course';
+    import utilApi from '@/common/utils';
     export default {
         data() {
             return {

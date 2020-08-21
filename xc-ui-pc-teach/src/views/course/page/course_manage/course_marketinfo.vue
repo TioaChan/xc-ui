@@ -2,7 +2,7 @@
     <div>
         <el-form :model="courseMarketForm" label-width="110px" :rules="courseMarketFormRules" ref="courseMarketForm">
             <el-form-item label="课程价格" prop="charge">
-                <b v-for="charge in chargeList">
+                <b v-for="charge in chargeList" :key="charge.index">
                     <el-radio v-model="courseMarketForm.charge" :label="charge.sdId">{{charge.sdName}}</el-radio>
                     &nbsp;&nbsp;
                 </b>
@@ -10,7 +10,7 @@
                 金额（元）：<el-input :disabled="this.courseMarketForm.charge == '203002'?false:true" v-model="courseMarketForm.price"></el-input>
             </el-form-item>
             <el-form-item label="课程有效期" prop="expires">
-                <b v-for="valid in validList">
+                <b v-for="valid in validList" :key="valid.index">
                     <el-radio v-model="courseMarketForm.valid" :label="valid.sdId">{{valid.sdName}}</el-radio>&nbsp;&nbsp;
                 </b>
                 <br />
@@ -30,9 +30,9 @@
     </div>
 </template>
 <script>
-    import * as courseApi from '../../api/course';
-    import utilApi from '../../../../common/utils';
-    import * as systemApi from '../../../../base/api/system';
+    import * as courseApi from '@/assets/api/course';
+    // import utilApi from '../@/common/utils';
+    import * as systemApi from '@/assets/api/system.js';
     export default {
         data() {
             return {

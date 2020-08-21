@@ -1,5 +1,5 @@
-import http from './../../../base/api/public'
+import http from '@/assets/api/public'
 // 查询广告图片
 export const getBannerPic = () => {
-  return http.fetchQuickSearch('/banner')
+    return http.fetchQuickSearch('/banner')
 }

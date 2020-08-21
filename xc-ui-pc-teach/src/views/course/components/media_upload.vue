@@ -12,8 +12,8 @@
     </div>
 </template>
 <script>
-    import $ from '../../../../static/plugins/jquery/dist/jquery.js'
-    import webuploader from '../../../../static/plugins/webuploader/dist/webuploader.js'
+    // import $ from '../../../../static/plugins/jquery/dist/jquery.js'
+    // import webuploader from '../../../../static/plugins/webuploader/dist/webuploader.js'
 
     export default {
 

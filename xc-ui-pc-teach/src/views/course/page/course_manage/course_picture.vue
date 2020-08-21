@@ -7,9 +7,9 @@
 </template>
 <script>
     import * as sysConfig from '@/../config/sysConfig';
-    import * as courseApi from '../../api/course';
-    import utilApi from '../../../../common/utils';
-    import * as systemApi from '../../../../base/api/system';
+    import * as courseApi from '@/assets/api/course';
+    // import utilApi from '../@/common/utils';
+    // import * as systemApi from '@/assets/api/system.js';
     export default {
         data() {
             return {
@@ -32,7 +32,7 @@
 
             },
             //删除图片
-            handleRemove(file, fileList) {
+            handleRemove(file) {
                 console.log(file)
                 //调用服务端去删除课程图片信息，如果返回false，前端停止删除
                 //异步调用
@@ -53,7 +53,7 @@
 
             },
             //上传成功的钩子方法
-            handleSuccess(response, file, fileList) {
+            handleSuccess(response) {
                 console.log(response)
                 //        alert('上传成功')
                 //调用课程管理的保存图片接口，将图片信息保存到课程管理数据库course_pic中
@@ -72,7 +72,7 @@
 
             },
             //上传失败执行的钩子方法
-            handleError(err, file, fileList) {
+            handleError() {
                 this.$message.error('上传失败');
                 //清空文件队列
                 this.fileList = []

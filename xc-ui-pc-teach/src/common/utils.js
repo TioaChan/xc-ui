@@ -1,19 +1,20 @@
 let SIGN_REGEXP = /([yMdhsm])(\1*)/g;
 let DEFAULT_PATTERN = 'yyyy-MM-dd';
+let Base64 = require('js-base64').Base64;
 import jwtDecode from 'jwt-decode'
 import { Message } from 'element-ui';
 
 function padding(s, len) {
-    var len = len - (s + '').length;
-    for (var i = 0; i < len; i++) {
+    let tempLen = len - (s + '').length;
+    for (let i = 0; i < tempLen; i++) {
         s = '0' + s;
     }
     return s;
-};
+}
 
 export default {
     // getActiveUser:function(){
-    //   let activeUserStr = this.getSession("activeUser");
+    //   let activeUserStr = this.getUserSession("activeUser");
     //   return JSON.parse(activeUserStr);
     // },
     getActiveUser: function () {
@@ -31,26 +32,6 @@ export default {
         if (activeUser) {
             return activeUser.jwt
         }
-    },
-    //解析jwt令牌，获取用户信息
-    getUserInfoFromJwt: function (jwt) {
-        if (!jwt) {
-            return;
-        }
-        var jwtDecodeVal = jwtDecode(jwt);
-        if (!jwtDecodeVal) {
-            return;
-        }
-        let activeUser = {}
-        //console.log(jwtDecodeVal)
-        activeUser.utype = jwtDecodeVal.utype || '';
-        activeUser.username = jwtDecodeVal.name || '';
-        activeUser.userpic = jwtDecodeVal.userpic || '';
-        activeUser.userid = jwtDecodeVal.userid || '';
-        activeUser.authorities = jwtDecodeVal.authorities || '';
-        activeUser.uid = jwtDecodeVal.jti || '';
-        activeUser.jwt = jwt;
-        return activeUser;
     },
     checkActiveUser: function () {
         // var jwt = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjEyNjMzNjUsInVzZXJfbmFtZSI6IjEyMyIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iLCJnZXRSZXNvdXJjZSJdLCJqdGkiOiI3NmIxOTgzMi01MDk3LTQyMDMtYjhjMS1kOGI1N2ZmMmZhOTAiLCJjbGllbnRfaWQiOiJtYW5hZ2VyIiwic2NvcGUiOlsibWFuYWdlciJdfQ.MzycLCC9cR-905ilrd1bWH52nqto4MDYbbMSXgcRdVkUGlv2A2JrlIvbvxNc2BVug1L59AV_7hUa_SHZQgrOdHnyoMdcu5KoHHXsJi1O5wUXkuahc-K3KoBhwkyWY9O-DvwZhrmzsYN2gb_3qmU2xbHu6U1pwwscXGHjbKJDoWGdrmMkRc1cpxuqvH-0eusR1GLQ4gTBSyVNW4XVO7jMt9ATBubos7GhtbAMXnCQVO9pui2zvPvKVxlvwMjJowjdCc_5hvXjyUvWgbU1qUrdtXeskeT-HoVUtsol6OnFHnq7o9bIin1493ZwjDck_0R1R8mkGRGKylQtZdzESeQpYA';
@@ -92,9 +73,14 @@ export default {
                         })*/
             }
             //console.log(authorities)
-            var ret1 = authorities.find((value, index, arr) => {
+
+            // var ret1 = authorities.find((value, index, arr) => {
+            //     return value == permission;
+            // })
+            var ret1 = authorities.find((value) => {
                 return value == permission;
             })
+
             if (!ret1) {
                 Message.error('对不起您没有此操作权限！');
                 //跳转到统一授权失败页面
@@ -109,9 +95,14 @@ export default {
         if (routeValue.meta && routeValue.meta.permission) {
             let permission = routeValue.meta.permission
             // console.log(routeValue);
-            var ret1 = authorities.find((value, index, arr) => {
+
+            // var ret1 = authorities.find((value, index, arr) => {
+            //     return value == permission;
+            // })
+            var ret1 = authorities.find((value) => {
                 return value == permission;
             })
+
             if (!ret1) {
                 //将菜单 隐藏
                 routeValue.hidden = true
@@ -120,9 +111,13 @@ export default {
     },
 
     getCookie: function (name) {
-        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-        if (arr = document.cookie.match(reg))
+
+        var arr;
+        var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (document.cookie.match(reg)) {
+            arr = document.cookie.match(reg)
             return (arr[2]);
+        }
         else
             return null;
     },
@@ -135,16 +130,16 @@ export default {
     delCookie: function (name) {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
-        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+
+        // document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        document.cookie = name + "=" + ";expires=" + exp.toGMTString();
+
     },
     setSession: function (key, value) {
         return sessionStorage.setItem(key, value);
     },
     getUserSession: function (key) {
         return sessionStorage.getItem(key);
-    },
-    setUserSession: function (key, value) {
-        return sessionStorage.setItem(key, value);
     },
     delUserSession: function (key) {
         return sessionStorage.removeItem(key)

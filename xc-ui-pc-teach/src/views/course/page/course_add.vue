@@ -12,12 +12,12 @@
                 </el-cascader>
             </el-form-item>
             <el-form-item label="课程等级" prop="grade">
-                <b v-for="grade in gradeList">
+                <b v-for="grade in gradeList" :key="grade.index">
                     <el-radio v-model="courseForm.grade" :label="grade.sdId">{{grade.sdName}}</el-radio>&nbsp;&nbsp;
                 </b>
             </el-form-item>
             <el-form-item label="学习模式" prop="studymodel">
-                <b v-for="studymodel_v in studymodelList">
+                <b v-for="studymodel_v in studymodelList" :key="studymodel_v.index">
                     <el-radio v-model="courseForm.studymodel" :label="studymodel_v.sdId">{{studymodel_v.sdName}}</el-radio>&nbsp;&nbsp;
                 </b>
 
@@ -34,9 +34,9 @@
     </div>
 </template>
 <script>
-    import * as courseApi from '../api/course';
-    import utilApi from '../../../common/utils';
-    import * as systemApi from '../../../base/api/system';
+    import * as courseApi from '@/assets/api/course';
+    // import utilApi from '@/common/utils';
+    import * as systemApi from '@/assets/api/system';
     export default {
 
         data() {

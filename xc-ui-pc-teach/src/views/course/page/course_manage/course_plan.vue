@@ -52,10 +52,10 @@
 </template>
 <script>
     let id = 1000;
-    import * as courseApi from '../../api/course';
-    import utilApi from '../../../../common/utils';
-    import * as systemApi from '../../../../base/api/system';
-    import mediaList from '@/module/media/page/media_list.vue';
+    import * as courseApi from '@/assets/api/course';
+    // import utilApi from '../@/common/utils';
+    // import * as systemApi from '@/assets/api/system.js';
+    import mediaList from '@/views/media/page/media_list.vue';
 
     export default {
         components: {
@@ -160,7 +160,7 @@
 
             },
             edit(data) {
-                //alert(data.id);
+                alert(data.id);
             },
             remove(node, data) {
                 const parent = node.parent;
@@ -169,51 +169,53 @@
                 children.splice(index, 1);
 
             },
-            renderContent(h, { node, data, store }) {
-                return ( <
-                        span style = "flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 14px; padding-right: 8px;" >
-                        <
-                        span >
-                        <
-                        span > { node.label } < /span> <
-                        /span> <
-                        span >
-                        <
-                        el - button style = "font-size: 12px;"
-                        type = "text"
-                        on - click = {
-                            () => this.choosevideo(data) } > { data.mediaFileOriginalName } & nbsp; & nbsp; & nbsp; & nbsp; 选择视频 < /el-button> <
-                        el - button style = "font-size: 12px;"
-                        type = "text"
-                        on - click = {
-                            () => this.edit(data) } > 修改 < /el-button> <
-                        el - button style = "font-size: 12px;"
-                        type = "text"
-                        on - click = {
-                            () => this.remove(node, data) } > 删除 < /el-button> <
-                        /span> <
-                        /span>);
-                    },
-                    findTeachplan() {
-                        this.teachplanList = []
-                        //查询课程计划
-                        courseApi.findTeachplanList(this.courseid).then(res => {
-                            if (res && res.children) {
-                                this.teachplanList = res.children;
-                            }
-
-
-                        })
-                    }
-            },
-            mounted() {
-                //课程id
-                this.courseid = this.$route.params.courseid;
+            // renderContent(h, { node, data, store }) {
+            //     // return (
+            //     //     // <
+            //     //     //     span style = "flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 14px; padding-right: 8px;" >
+            //     //     //     <
+            //     //     //     span >
+            //     //     //     <
+            //     //     //     span > { node.label } < /span> <
+            //     //     //     /span> <
+            //     //     //     span >
+            //     //     //     <
+            //     //     //     el - button style = "font-size: 12px;"
+            //     //     //     type = "text"
+            //     //     //     on - click = {
+            //     //     //         () => this.choosevideo(data) } > { data.mediaFileOriginalName } & nbsp; & nbsp; & nbsp; & nbsp; 选择视频 < /el-button> <
+            //     //     //     el - button style = "font-size: 12px;"
+            //     //     //     type = "text"
+            //     //     //     on - click = {
+            //     //     //         () => this.edit(data) } > 修改 < /el-button> <
+            //     //     //     el - button style = "font-size: 12px;"
+            //     //     //     type = "text"
+            //     //     //     on - click = {
+            //     //     //         () => this.remove(node, data) } > 删除 < /el-button> <
+            //     //     //     /span> <
+            //     //     // 	/span>
+            //     // )
+            // },
+            findTeachplan() {
+                this.teachplanList = []
                 //查询课程计划
-                // this.findTeachplan()
+                courseApi.findTeachplanList(this.courseid).then(res => {
+                    if (res && res.children) {
+                        this.teachplanList = res.children;
+                    }
 
+
+                })
             }
+        },
+        mounted() {
+            //课程id
+            this.courseid = this.$route.params.courseid;
+            //查询课程计划
+            // this.findTeachplan()
+
         }
+    }
 </script>
 <style>
 

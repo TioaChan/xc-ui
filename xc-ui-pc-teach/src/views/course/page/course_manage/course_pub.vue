@@ -39,10 +39,10 @@
     </div>
 </template>
 <script>
-    import * as sysConfig from '@/../config/sysConfig';
-    import * as courseApi from '../../api/course';
-    import utilApi from '../../../../common/utils';
-    import * as systemApi from '../../../../base/api/system';
+    // import * as sysConfig from '@/../config/sysConfig';
+    import * as courseApi from '@/assets/api/course';
+    // import utilApi from '../@/common/utils';
+    // import * as systemApi from '@/assets/api/system.js';
     export default {
 
         data() {

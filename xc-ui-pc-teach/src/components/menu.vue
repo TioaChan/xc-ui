@@ -47,7 +47,7 @@
 
 <script>
     import PHead from '@/components/header.vue';
-    // import utilApi from '../../../common/utils';
+    // import utilApi from '@/common/utils';
     export default {
         components: {
             PHead

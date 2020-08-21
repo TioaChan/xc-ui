@@ -51,8 +51,8 @@
 <script>
     //  import addVue from './add.vue';
     //  import editVue from './edit.vue';
-    import * as courseApi from '../api/course';
-    import utilApi from '../../../common/utils';
+    import * as courseApi from '@/assets/api/course';
+    import utilApi from '@/common/utils';
     export default {
         //    components: {
         //      addVue,

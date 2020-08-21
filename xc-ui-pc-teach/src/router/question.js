@@ -1,6 +1,6 @@
-import list from '@/module/question/page/list.vue';
-import add from '@/module/question/page/add.vue';
-import Home from '@/module/home/page/home.vue';
+import list from '@/views/question/page/list.vue';
+import add from '@/views/question/page/add.vue';
+import Home from '@/views/home/page/home.vue';
 export default [
   {
     path: '/question',

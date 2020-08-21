@@ -56,7 +56,7 @@
     </div>
 </template>
 <script>
-    import * as mediaApi from '../api/media'
+    import * as mediaApi from '@/assets/api/media'
     import utilApi from '@/common/utils';
     export default {
         props: ['ischoose'],
@@ -76,13 +76,13 @@
             }
         },
         methods: {
-            formatCreatetime(row, column) {
+            formatCreatetime(row) {
                 var createTime = new Date(row.uploadTime);
                 if (createTime) {
                     return utilApi.formatDate(createTime, 'yyyy-MM-dd hh:mm:ss');
                 }
             },
-            formatProcessStatus(row, column) {
+            formatProcessStatus(row) {
                 var processStatus = row.processStatus;
                 if (processStatus) {
                     if (processStatus == '303001') {
