@@ -1,4 +1,4 @@
-import Home from '@/views/home/page/home.vue';
+import Home from '@/components/menu.vue';
 import upload from '@/views/media/page/upload.vue';
 import media_list from '@/views/media/page/media_list.vue';
 export default [

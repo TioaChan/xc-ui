@@ -53,7 +53,7 @@
             return {
                 xclogo: require("@/assets/images/asset-logoIco-white.png"),
                 editLoading: false,
-                sysName: '系统管理中心',
+                sysName: '教学管理中心',
                 user: {
                     userid: '',
                     username: '',

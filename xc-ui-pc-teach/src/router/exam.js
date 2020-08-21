@@ -1,6 +1,6 @@
 import list from '@/views/exam/page/list.vue';
 import add from '@/views/exam/page/add.vue';
-import Home from '@/views/home/page/home.vue';
+import Home from '@/components/menu.vue';
 export default [
   {
     path: '/exam',

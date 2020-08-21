@@ -1,4 +1,4 @@
-import Home from '@/views/home/page/home.vue';
+import Home from '@/components/menu.vue';
 import course_list from '@/views/course/page/course_list.vue';
 import course_add from '@/views/course/page/course_add.vue';
 import course_manage from '@/views/course/page/course_manage.vue';
