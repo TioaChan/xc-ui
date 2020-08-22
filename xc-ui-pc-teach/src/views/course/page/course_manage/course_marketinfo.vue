@@ -1,19 +1,17 @@
 <template>
     <div>
-        <el-form :model="courseMarketForm" label-width="110px" :rules="courseMarketFormRules" ref="courseMarketForm">
+        <el-form :model="courseMarketForm" :rules="courseMarketFormRules" ref="courseMarketForm">
             <el-form-item label="课程价格" prop="charge">
                 <b v-for="charge in chargeList" :key="charge.index">
                     <el-radio v-model="courseMarketForm.charge" :label="charge.sdId">{{charge.sdName}}</el-radio>
                     &nbsp;&nbsp;
                 </b>
-                <br />
                 金额（元）：<el-input :disabled="this.courseMarketForm.charge == '203002'?false:true" v-model="courseMarketForm.price"></el-input>
             </el-form-item>
             <el-form-item label="课程有效期" prop="expires">
                 <b v-for="valid in validList" :key="valid.index">
                     <el-radio v-model="courseMarketForm.valid" :label="valid.sdId">{{valid.sdName}}</el-radio>&nbsp;&nbsp;
                 </b>
-                <br />
                 开始时间：
                 <el-date-picker :disabled="this.courseMarketForm.valid == '204002'?false:true" type="date" placeholder="选择日期" v-model="courseMarketForm.startTime"></el-date-picker>
                 结束时间：

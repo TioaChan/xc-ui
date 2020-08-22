@@ -14,7 +14,7 @@
                             </template>
 
                             <template v-for="child in menu.children">
-                                <el-menu-item :index="child.path" :key="child.id">
+                                <el-menu-item v-if="!child.hidden" :index="child.path" :key="child.id">
                                     {{child.name}}
                                 </el-menu-item>
 
