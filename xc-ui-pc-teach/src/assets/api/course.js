@@ -8,7 +8,7 @@ let apiUrl = sysConfig.xcApiUrlPre;
 export const findCourseList = (page, size, params) => {
     //使用工具类将json对象转成key/value
     let queries = querystring.stringify(params)
-    return http.requestQuickGet(apiUrl + "/course/coursebase/list/" + page + "/" + size + "?" + queries)
+    return http.requestQuickGet(apiUrl + "/course/coursebase/list/" + page + "/" + size + "/?" + queries)
 }
 
 //查询课程分类
@@ -34,7 +34,7 @@ export const addCoursePic = (courseId, pic) => {
 }
 //查询课程图片
 export const findCoursePicList = courseId => {
-    return http.requestQuickGet(apiUrl + '/course/coursepic/list/' + courseId)
+    return http.requestQuickGet(apiUrl + '/course/coursebase/coursePic/list/' + courseId)
 }
 
 //删除课程图片
