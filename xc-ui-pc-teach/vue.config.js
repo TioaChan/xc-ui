@@ -30,59 +30,59 @@ module.exports = {
         host: 'localhost',
         port: 12000,
         proxy: {
-            '/banner': {
-                target: 'http://127.0.0.1:7777'
-            },
-            '/api/ucenter': {
-                target: 'http://127.0.0.1:31200',
-                pathRewrite: {
-                    '^/api': ''
-                }
-            },
-            '/api/auth': {
-                target: 'http://127.0.0.1:31200/auth',
-                pathRewrite: {
-                    '^/api': ''
-                }
-            },
+            // '/banner': {
+            //     target: 'http://127.0.0.1:7777'
+            // },
+            // '/api/ucenter': {
+            //     target: 'http://127.0.0.1:31200',
+            //     pathRewrite: {
+            //         '^/api': ''
+            //     }
+            // },
+            // '/api/auth': {
+            //     target: 'http://127.0.0.1:31200/auth',
+            //     pathRewrite: {
+            //         '^/api': ''
+            //     }
+            // },
             '/api/course': {
                 target: 'http://127.0.0.1:31200',
                 pathRewrite: {
                     '^/api': ''
                 }
             },
-            '/api/media': { //媒资管理
-                target: 'http://127.0.0.1:31400',
-                pathRewrite: {
-                    '^/api': ''
-                }
-            },
+            // '/api/media': { //媒资管理
+            //     target: 'http://127.0.0.1:31400',
+            //     pathRewrite: {
+            //         '^/api': ''
+            //     }
+            // },
 
             '/api/cms': { //cms管理
-                target: 'http://127.0.0.1:50201',
-                pathRewrite: {
-                    '^/api': ''
-                }
-            },
-
-            '/api/filesystem': { //文件系统管理
-                target: 'http://127.0.0.1:22100',
-                pathRewrite: {
-                    '^/api': ''
-                }
-            },
-            '/api/category': { //分类管理
-                target: 'http://127.0.0.1:31200',
-                pathRewrite: {
-                    '^/api': ''
-                }
-            },
-            '/api/sys': { //系统管理
                 target: 'http://127.0.0.1:31001',
                 pathRewrite: {
                     '^/api': ''
                 }
-            }
+            },
+
+            // '/api/filesystem': { //文件系统管理
+            //     target: 'http://127.0.0.1:22100',
+            //     pathRewrite: {
+            //         '^/api': ''
+            //     }
+            // },
+            // '/api/category': { //分类管理
+            //     target: 'http://127.0.0.1:31200',
+            //     pathRewrite: {
+            //         '^/api': ''
+            //     }
+            // },
+            // '/api/sys': { //系统管理
+            //     target: 'http://127.0.0.1:31001',
+            //     pathRewrite: {
+            //         '^/api': ''
+            //     }
+            // }
         }
     }
 }
