@@ -3,7 +3,7 @@
         <el-row>
             <el-col :span="8" :offset=2>
                 <el-card :body-style="{ padding: '10px' }">
-                    <img src="/static/images/add.jpg" class="image" height="150px">
+                    <img :src="addBtnImg" class="image" height="150px">
                     <div style="padding: 10px;">
                         <span>课程名称</span>
                         <div class="bottom clearfix">
@@ -60,6 +60,7 @@
                 sels: [], //列表选中列
                 imgUrl: sysConfig.imgUrl,
                 defaultCourseImg: require('@/assets/images/nonepic.jpg'),
+                addBtnImg: require('@/assets/images/add.jpg'),
             }
         },
         methods: {
