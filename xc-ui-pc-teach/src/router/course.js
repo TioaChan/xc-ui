@@ -1,7 +1,7 @@
 import Home from '@/components/menu.vue';
 import course_list from '@/views/course/page/course_list.vue';
 import course_add from '@/views/course/page/course_add.vue';
-import course_manage from '@/views/course/page/course_manage.vue';
+import course_menu from '@/views/course/components/course_menu.vue';
 import course_summary from '@/views/course/page/course_manage/course_summary.vue';
 import course_picture from '@/views/course/page/course_manage/course_picture.vue';
 import course_baseinfo from '@/views/course/page/course_manage/course_baseinfo.vue';
@@ -22,7 +22,7 @@ export default [
         {
             path: '/course/manager/:courseid',
             name: '管理课程',
-            component: course_manage,
+            component: course_menu,
             hidden: true,
             children: [
                 { path: '/course/manage/plan/:courseid', name: '课程计划', component: course_plan, hidden: false },

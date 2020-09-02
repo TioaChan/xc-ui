@@ -39,7 +39,7 @@ export const findCoursePicList = courseId => {
 
 //删除课程图片
 export const deleteCoursePic = courseId => {
-    return http.requestDelete(apiUrl + '/course/coursepic/delete?courseId=' + courseId)
+    return http.requestDelete(apiUrl + '/course/coursebase/coursePic/' + courseId)
 }
 /*预览课程*/
 export const preview = id => {
@@ -59,16 +59,21 @@ export const savemedia = teachplanMedia => {
     return http.requestPost(apiUrl + '/course/savemedia', teachplanMedia);
 }
 
+//获取课程基本信息
+export const getCoursebaseById = id => {
+    return http.requestQuickGet(apiUrl + '/course/coursebase/' + id)
+};
+//更新课程基本信息deleteCoursePic
+export const updatecourseBase = (id, course) => {
+    return http.requestPut(apiUrl + '/course/coursebase/' + id, course)
+};
 
-export const getCourseMarketById = () => {
-    console.log("TODO");
-}
-export const getCoursebaseById = () => {
-    console.log("TODO");
-}
-export const updateCourseMarket = () => {
-    console.log("TODO");
-}
-export const updateCoursebase = () => {
-    console.log("TODO");
-}
+//获取课程营销信息
+export const getCourseMarketById = id => {
+    return http.requestQuickGet(apiUrl + '/course/courseMarket/' + id)
+};
+
+// 更新课程营销信息
+export const updateCourseMarket = (id, courseMarket) => {
+    return http.requestPost(apiUrl + '/course/courseMarket/' + id, courseMarket)
+};

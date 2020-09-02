@@ -71,18 +71,18 @@ module.exports = {
             //         '^/api': ''
             //     }
             // },
-            // '/api/category': { //分类管理
-            //     target: 'http://127.0.0.1:31200',
-            //     pathRewrite: {
-            //         '^/api': ''
-            //     }
-            // },
-            // '/api/sys': { //系统管理
-            //     target: 'http://127.0.0.1:31001',
-            //     pathRewrite: {
-            //         '^/api': ''
-            //     }
-            // }
+            '/api/category': { //分类管理
+                target: 'http://127.0.0.1:31200',
+                pathRewrite: {
+                    '^/api': ''
+                }
+            },
+            '/api/sys': { //系统管理
+                target: 'http://127.0.0.1:31001',
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
         }
     }
 }

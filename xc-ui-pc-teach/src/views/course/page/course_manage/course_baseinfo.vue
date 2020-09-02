@@ -119,26 +119,30 @@
         mounted() {
             //查询数据字典字典
             systemApi.sys_getDictionary('201').then((res) => {
-                //        console.log(res);
                 this.studymodelList = res.dvalue;
             });
+
             systemApi.sys_getDictionary('200').then((res) => {
                 this.gradeList = res.dvalue;
             });
+
             //取课程分类
             courseApi.category_findlist({}).then((res) => {
                 this.categoryList = res.children;
             });
+
             //查询课程信息
             //课程id
             this.courseid = this.$route.params.courseid;
             courseApi.getCoursebaseById(this.courseid).then((res) => {
-                //          console.log(res);
+                console.log(res);
                 this.courseForm = res;
                 //课程分类显示，需要两级分类
                 this.categoryActive.push(this.courseForm.mt);
                 this.categoryActive.push(this.courseForm.st);
-            });
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     }
 </script>
