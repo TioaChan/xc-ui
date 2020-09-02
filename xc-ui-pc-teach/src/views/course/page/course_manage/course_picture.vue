@@ -1,6 +1,14 @@
 <template>
     <div>
-        <el-upload action="/api/filesystem/upload" list-type="picture-card" :before-upload="setuploaddata" :on-success="handleSuccess" :file-list="fileList" :limit="picmax" :on-exceed="rejectupload" :before-remove="handleRemove" :data="uploadval">
+        <el-upload action="/api/filesystem/upload" 
+		list-type="picture-card" 
+		:before-upload="setuploaddata" 
+		:on-success="handleSuccess" 
+		:file-list="fileList" 
+		:limit="picmax" 
+		:on-exceed="rejectupload" 
+		:before-remove="handleRemove" 
+		:data="uploadval">
             <i class="el-icon-plus"></i>
         </el-upload>
     </div>

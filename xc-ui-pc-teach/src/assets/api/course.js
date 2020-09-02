@@ -30,7 +30,7 @@ export const addTeachplan = teachplah => {
 
 //保存课程图片地址到课程数据 库
 export const addCoursePic = (courseId, pic) => {
-    return http.requestPost(apiUrl + '/course/coursepic/add?courseId=' + courseId + "&pic=" + pic)
+    return http.requestPost(apiUrl + '/course/coursepic/add?courseId=' + courseId + "&pictureId=" + pic)
 }
 //查询课程图片
 export const findCoursePicList = courseId => {

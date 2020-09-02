@@ -65,12 +65,12 @@ module.exports = {
                 }
             },
 
-            // '/api/filesystem': { //文件系统管理
-            //     target: 'http://127.0.0.1:22100',
-            //     pathRewrite: {
-            //         '^/api': ''
-            //     }
-            // },
+            '/api/filesystem': { //文件系统管理
+                target: 'http://127.0.0.1:22100',
+                pathRewrite: {
+                    '^/api': ''
+                }
+            },
             '/api/category': { //分类管理
                 target: 'http://127.0.0.1:31200',
                 pathRewrite: {
