@@ -18,7 +18,6 @@
 				ref="teachplanForm"
 				:model="teachplanActive"
 				label-width="140px"
-				style="width:600px;"
 				:rules="teachplanRules"
 			>
 				<el-form-item label="上级结点">
@@ -83,6 +82,7 @@
 				</el-form-item>
 			</el-form>
 		</el-dialog>
+
 		<el-dialog title="选择媒资文件" :visible.sync="mediaFormVisible">
 			<media-list
 				v-bind:ischoose="true"

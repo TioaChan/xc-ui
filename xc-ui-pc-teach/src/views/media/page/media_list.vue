@@ -1,18 +1,22 @@
 <template>
-	<div>
+	<div style="padding-bottom: 30px;">
 		<!--查询表单-->
 		<el-form :model="params">
 			标签：
-			<el-input v-model="params.tag" style="width:160px"></el-input>
+			<el-input
+				v-model="params.tag"
+				style="width:170px;margin-right:2rem"
+			></el-input>
 			原始名称：
 			<el-input
 				v-model="params.fileOriginalName"
-				style="width:160px"
+				style="width:170px;margin-right:2rem"
 			></el-input>
 			处理状态：
 			<el-select
 				v-model="params.processStatus"
 				placeholder="请选择处理状态"
+				style="margin-right:1rem"
 			>
 				<el-option
 					v-for="item in processStatusList"
@@ -22,10 +26,7 @@
 				>
 				</el-option>
 			</el-select>
-			<br />
-			<el-button type="primary" v-on:click="query" size="small"
-				>查询</el-button
-			>
+			<el-button type="primary" v-on:click="query">查询</el-button>
 			<router-link class="mui-tab-item" :to="{ path: '/upload' }">
 				<el-button type="primary" size="small" v-if="ischoose != true"
 					>上传文件</el-button
@@ -96,7 +97,7 @@
 			</el-table-column>
 		</el-table>
 		<!--分页-->
-		<el-col :span="24" class="toolbar">
+		<el-col :span="24" class="toolbar" style="margin-top:1rem">
 			<el-pagination
 				background
 				layout="prev, pager, next"
