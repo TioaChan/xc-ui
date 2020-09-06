@@ -30,7 +30,7 @@ export const addTeachplan = teachplah => {
 
 //保存课程图片地址到课程数据 库
 export const addCoursePic = (courseId, pic) => {
-    return http.requestPost(apiUrl + '/course/coursepic/add?courseId=' + courseId + "&pictureId=" + pic)
+    return http.requestPost(apiUrl + '/course/coursebase/coursePic/' + courseId + "?pictureId=" + pic)
 }
 //查询课程图片
 export const findCoursePicList = courseId => {
@@ -70,10 +70,10 @@ export const updatecourseBase = (id, course) => {
 
 //获取课程营销信息
 export const getCourseMarketById = id => {
-    return http.requestQuickGet(apiUrl + '/course/courseMarket/' + id)
+    return http.requestQuickGet(apiUrl + '/course/coursebase/courseMarket/' + id)
 };
 
 // 更新课程营销信息
 export const updateCourseMarket = (id, courseMarket) => {
-    return http.requestPost(apiUrl + '/course/courseMarket/' + id, courseMarket)
+    return http.requestPost(apiUrl + '/course/coursebase/courseMarket/' + id, courseMarket)
 };

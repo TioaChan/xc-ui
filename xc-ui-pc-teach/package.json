@@ -24,6 +24,10 @@
         "vuex": "^3.4.0"
     },
     "devDependencies": {
+        "@babel/plugin-syntax-jsx": "^7.10.4",
+        "@babel/preset-env": "^7.11.5",
+        "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
+        "@vue/babel-plugin-transform-vue-jsx": "^1.1.2",
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-eslint": "~4.5.0",
         "@vue/cli-plugin-router": "^4.5.3",
