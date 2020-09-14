@@ -83,7 +83,11 @@
 			</el-form>
 		</el-dialog>
 
-		<el-dialog title="选择媒资文件" :visible.sync="mediaFormVisible">
+		<el-dialog
+			title="选择媒资文件"
+			:visible.sync="mediaFormVisible"
+			width="70%"
+		>
 			<media-list
 				v-bind:ischoose="true"
 				@choosemedia="choosemedia"
